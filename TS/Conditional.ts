@@ -34,3 +34,6 @@ type ResultShouldFalse = IsString<"hi" | 3>; //boolean
 //이를 막으려면 배열로 제네릭을 감싸면 된다.
 type IsString1<T> = [T] extends [string] ? true : false;
 type ResultShouldFalse1 = IsString<"hi" | 3>; //false
+
+const Conditional = 1;
+export default Conditional;
