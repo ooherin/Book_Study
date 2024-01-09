@@ -14,11 +14,6 @@ const arr1 = [1, 3, "five"]; //(string | number)[]
 const obj = { name: "rin " } as const;
 //타입이 readonly name: "rin "; 로 추론된다.
 
-//배열말고 튜플도 있다.
-//빈 배열은 any[]로 추론된다.
-
-const arr2 = []; //never[]
-
 //튜플인 요소마다 타입이 정해져있는 타입이지만, 배열에 요소를 추가하거나 삭제하는 것은 막지 않는다.
 const tuple1: [number, string] = [1, "re"];
 tuple1.push(1); //에러 없음
@@ -76,6 +71,7 @@ try {
 }
 
 //바로 e에 Error 타입을 할당하려고 하면 에러가 남.
+//e는 any혹은 unknown 타입이여야 하기 때문
 //catch문의 e는 unknown 혹은 any타입이여야 하므로 다음과 같이 변수에서 Error타입을 써줌
 try {
 } catch (e) {
@@ -99,26 +95,11 @@ function neverFunc() {
 
 //noImplicitAny를 사용하면 빈 배열이 any[]에서 never[]로 됨. (any를 사용하지않으므로)
 //해당 배열의 타입을 지정해주어야 해결됨.
+const arrIsAny = []; //any
+//noImplicitAny를 true로 했을 때
+const arrIsKnown = []; //unknown
 
 //strictNullChecks를 false로 설정하면 undefined와 null의 구분이 없어진다.
 
-//빈 객체 타입 : {}
-//null과 undefined를 제외한 모든 타입
-//인터페이스도 이 빈 객체 타입임
-interface NoProps {}
-
-const obj3: NoProps = {
-  why: "에러 안나",
-};
-
-const what: NoProps = "이게 되네?";
-//const omg: NoProps = null; //❌null 은 할당 불가
-//이렇게 한 이유는 아무것도 없는 빈 객체를 쓸 일이 없기 때문이다.
-
-//인터페이스의 경우 쉽게 병합 할 수 있지만 속성 이름이 같을 경우 타입도 같아야 함.
-interface Merge {
-  one: string;
-}
-interface Merge {
-  //one: number; ❌
-}
+const Baisc1 = 1;
+export default Baisc1;

@@ -26,6 +26,7 @@ const bToA: A = bObj; //Ok
 //안되는 이유는 aObj에 B에서 요구하는 age속성이 없기 때문이다.
 
 //넓은 집합에 좁은 집합을 넣을 수 있지만, 좁은 집합에 넓은 집합을 넣을 수는 없다.
+//인터페이스 A가 B보다 넓은 집합이다.
 
 //구조적 타이핑
 //타입스크립트는 다음과 같이 타입이 모두 같은 경우에는, 구조가 같으면 같은 타입(객체)로 인식함.
@@ -41,3 +42,13 @@ interface Computer {
 }
 
 const computer: Computer = { name: "mac", price: 2000 };
+
+const Baisc3 = 1;
+export default Baisc3;
+
+//함수를 사용할 때 콜백의 매개변수에는 타입을 생략해도된다.
+
+function example(callback: (error: Error, result: string) => void) {}
+
+example((e, r) => {});
+example(() => {}); //에러 안남. 콜백에 인자 없어도 ok

@@ -13,12 +13,22 @@ const ex: Example.Ineer = {
 };
 
 //객체의 속성에서 선언하지 않은 속성의 경우 에러가 남
+//객체 리터럴 속성
 interface Person {
   name: string;
 }
 
 const person: Person = {
   name: "rin",
+  //age: 20, ❌
+};
+
+type PersonType = {
+  name: string;
+};
+
+const person3: PersonType = {
+  name: "jin",
   //age: 20, ❌
 };
 
@@ -44,6 +54,11 @@ type Animal = {
 
 type Sort = Animal["sort"]; //해당 값의 타입으로 타입을 만들 수 있다.
 //이것을입덱스 접근 타입이라고 함.
+// type Sort = {
+//   name: string;
+//   country: string;
+//   color: string;
+// }
 
 const obj5 = {
   hello: "world",
@@ -52,7 +67,7 @@ const obj5 = {
 };
 
 type Types = typeof obj5;
-//type Keys = {
+// type {
 //   hello: string;
 //   name: string;
 //   age: number;
@@ -91,13 +106,13 @@ class Animal1 {
   }
 }
 
-class Dog extends Animal1 {
+class DogClass extends Animal1 {
   bark() {
     console.log(`${this.name}`);
   }
 }
 
-const dog = new Dog("puppy");
+const dog = new DogClass("puppy");
 console.log(dog.bark());
 
 //타입으로 상속받는 법
@@ -105,6 +120,7 @@ interface Animal2 {
   name: string;
 }
 
+//인터페이스와 객체를 묶어 새로운 타입 Dog1를 만들었다.
 type Dog1 = Animal2 & {
   bark(): void;
 };
@@ -115,21 +131,31 @@ const dog1: Dog1 = {
     console.log(`${this.name}`);
   },
 };
+
 //타입 별칭이 인터페이스를 상속할 수 있고, 그 반대도 가능하다.
 //한번에 여러 타입을 상속받을 수도 있다.
 type Animal3 = {
   name: string;
 };
 
-interface Dog extends Animal {
+interface Dog extends Animal3 {
   bark(): void;
 }
 
-interface Cat extends Animal {
+interface Cat extends Animal3 {
   meow(): void;
 }
-
 interface DogCat extends Dog, Cat {}
+
+const dogCat: DogCat = {
+  bark: () => console.log("bark"),
+  meow: () => console.log("bark"),
+  name: "dog And cat",
+};
+console.log(dogCat);
 
 type meow = DogCat["meow"];
 type bark = DogCat["bark"];
+
+const Basic2 = 1;
+export default Basic2;

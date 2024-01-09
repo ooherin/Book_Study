@@ -6,7 +6,7 @@
 //원본일 경우, Book 클래스를 활용해 book을 만들어 bookList에 집어넣고,
 //카피본일 경우 bookList에 title, author을 집어 넣지 않음. (어짜피 isbn으로 해당 책 데이터를 찾을
 //수 있기 때문에) isbn과 그 책의 고유 정보만 넣음
-//이렇게 하면, bookList에 담기는 객체 형태는 균일하지 않으마, 메모리 측면에서 효율적이다.
+//이렇게 하면, bookList에 담기는 객체 형태는 균일하지 않으마, 메모리 측면에서 효율적이다. ㅁㅇ
 class Book {
   constructor(title, author, isbn) {
     this.title = title;

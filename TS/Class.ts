@@ -13,7 +13,8 @@ class Person {
 //안 그럼 에러 남❌
 //모든 변수는 contructor와 짝이 맞아야 함.
 
-//클래스를 interface 를 implements로 확실하게 검사 가능
+//클래스 생성시 클래스를 interface 를 implements로 확실하게 검사 가능
+//클래스를 생성할 때에는 interface를 통해 타입 검사를 함
 interface Human {
   name: string;
   age: number;
@@ -58,6 +59,7 @@ class Human {
   }
 }
 
+//sleep이라는 메서드를 다시 정의하는 방법
 class Baby extends Human {
   override sleep() {
     console.log("코코");
@@ -75,6 +77,7 @@ abstract class AbstractPerson {
   name: string;
   age: number;
   married: boolean = false;
+  //job은 하위 클래스에서 다시 정의해야 함.
   abstract job: string;
   constructor(name: string, age: number, married: boolean) {
     this.name = name;
